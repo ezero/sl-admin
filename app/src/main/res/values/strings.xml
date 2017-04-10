@@ -22,4 +22,15 @@
     <string name="nav_user">Usuario Admin</string>
     <string name="nav_email">admin@softwareleague.com</string>
     <string name="save_action">Guardar</string>
+    <string name="title_activity_gamers">GamersActivity</string>
+    <string name="title_home">Activos</string>
+    <string name="title_dashboard">Historicos</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="hint_Id">Nombre del Campeonato</string>
+    <string name="hint_catdamas">Categoria Damas</string>
+    <string name="hint_catvarones">Categoria Varones</string>
+    <string name="hint_fechaInsi">Fecha Inscripción (Inicio)</string>
+    <string name="hint_fechaInsf">Fecha Inscripción (Final)</string>
+    <string name="hint_fechaCami">Fecha Campeonato (Inicio)</string>
+    <string name="hint_fechaCamf">Fecha Campeonato (Final)</string>
 </resources>

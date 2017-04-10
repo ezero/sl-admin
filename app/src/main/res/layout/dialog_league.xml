@@ -45,10 +45,10 @@
 
                 <EditText
                     android:id="@+id/etId"
-                    android:hint="Nombre del Campeonato"
+                    android:hint="@string/hint_Id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
@@ -56,70 +56,68 @@
                 android:id="@+id/checkCatDamas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Categoria Damas" />
+                android:text="@string/hint_catdamas" />
 
             <CheckBox
                 android:id="@+id/checkCatVarones"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Categoria Varones" />
+                android:text="@string/hint_catvarones" />
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/tilLocal"
+                android:id="@+id/tilfechaInsi"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/etLocal"
-                    android:hint=""
+                    android:id="@+id/etfechaInsi"
+                    android:hint="@string/hint_fechaInsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="date"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/tilUbicacion"
+                android:id="@+id/tilfechaInsf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/etUbicacion"
+                    android:id="@+id/etfechaInsf"
+                    android:hint="@string/hint_fechaInsf"
                     android:layout_width="match_parent"
-                    android:singleLine="true"
-                    android:hint=""
-                    android:layout_height="wrap_content" />
-
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/tilOficina"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <EditText
-                        android:id="@+id/etOficina"
-                        android:layout_width="match_parent"
-                        android:singleLine="true"
-                        android:hint=""
-                        android:layout_height="wrap_content" />
-                </android.support.design.widget.TextInputLayout>
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
-            <AutoCompleteTextView
-                android:hint=""
-                android:id="@+id/spinnerResponsible"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
             <android.support.design.widget.TextInputLayout
-                android:id="@+id/tilCargo"
+                android:id="@+id/tilfechaCami"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/etCargo"
+                    android:id="@+id/etfechaCami"
+                    android:hint="@string/hint_fechaCami"
                     android:layout_width="match_parent"
-                    android:hint=""
-                    android:singleLine="true"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:maxLines="1" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/tilfechaCamf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etfechaCamf"
+                    android:hint="@string/hint_fechaCamf"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
 
         </LinearLayout>
