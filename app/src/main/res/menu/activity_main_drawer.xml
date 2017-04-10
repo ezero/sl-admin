@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:checked="true"
+            android:icon="@drawable/ic_nav_soccer"
+            android:title="Campeonato" />
+        <item
+            android:id="@+id/nav_dates"
+            android:icon="@drawable/ic_nav_calendar"
+            android:title="Fechas Campeonato" />
+        <item
+            android:id="@+id/nav_teams"
+            android:icon="@drawable/ic_nav_teams"
+            android:title="Equipos Campeonatos" />
+
+        <!-- Sección de fixture -->
+        <item
+            android:id="@+id/campeonato_section"
+            android:title="Fixture Campeonato">
+            <menu>
+                <item
+                    android:id="@+id/nav_damas"
+                    android:title="Categoria Damas" />
+                <item
+                    android:id="@+id/nav_varones"
+                    android:title="Categoria Damas" />
+            </menu>
+        </item>
+        <item
+            android:id="@+id/nav_datos"
+            android:icon="@drawable/ic_nav_file_document"
+            android:title="Estadisticas" />
+
+        <!-- Sección de configuración -->
+        <item
+            android:id="@+id/configuration_section"
+            android:title="Configuración">
+            <menu>
+                <item
+                    android:id="@+id/nav_log_out"
+                    android:icon="@android:drawable/ic_lock_power_off"
+                    android:title="Cerrar Sesión" />
+            </menu>
+        </item>
+    </group>
+
+</menu>
