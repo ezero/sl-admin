@@ -39,7 +39,8 @@
         <activity
             android:name=".ui.GamersActivity"
             android:label="@string/title_activity_gamers"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ui.PendingActivity"></activity>
     </application>
 
 </manifest>
