@@ -1,4 +1,4 @@
-package com.softwareleague.app.sladmin.data.api.model;
+package com.softwareleague.app.sladmin.data.model;
 
 /**
  * Objeto plano Java para representar afiliados

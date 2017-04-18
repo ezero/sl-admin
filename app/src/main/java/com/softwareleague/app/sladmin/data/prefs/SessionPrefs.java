@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.text.TextUtils;
 
-import com.softwareleague.app.sladmin.data.api.model.Affiliate;
+import com.softwareleague.app.sladmin.data.model.Affiliate;
 
 /**
  * Manejador de preferencias de la sesión del administrador

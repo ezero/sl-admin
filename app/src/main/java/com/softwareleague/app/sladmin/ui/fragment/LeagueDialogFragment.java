@@ -1,4 +1,4 @@
-package com.softwareleague.app.sladmin.ui;
+package com.softwareleague.app.sladmin.ui.fragment;
 
 import android.app.Dialog;
 import android.support.v4.app.DialogFragment;
@@ -19,6 +19,9 @@ import android.widget.Toast;
 import com.softwareleague.app.sladmin.R;
 
 public class LeagueDialogFragment extends DialogFragment {
+
+    public LeagueDialogFragment(){}
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class LeagueDialogFragment extends DialogFragment {
 
         if (id == R.id.save){
             //opciones para guardar el dialogo a la web
-            Toast.makeText(getContext(),"Realizar Petición",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(),"Verifique - Existe Campeonato Activo",Toast.LENGTH_SHORT).show();
             return true;
         }else if (id == android.R.id.home){
             dismiss();

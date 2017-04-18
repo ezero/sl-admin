@@ -1,12 +1,11 @@
 package com.softwareleague.app.sladmin.data.api;
 
-import com.softwareleague.app.sladmin.data.api.model.Affiliate;
-import com.softwareleague.app.sladmin.data.api.model.LoginBody;
+import com.softwareleague.app.sladmin.data.model.Affiliate;
+import com.softwareleague.app.sladmin.data.model.LoginBody;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
-import retrofit2.http.POST;
 import retrofit2.http.Headers;
 
 

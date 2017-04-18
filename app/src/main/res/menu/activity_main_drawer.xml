@@ -8,10 +8,6 @@
             android:icon="@drawable/ic_nav_soccer"
             android:title="Campeonato" />
         <item
-            android:id="@+id/nav_dates"
-            android:icon="@drawable/ic_nav_calendar"
-            android:title="Fechas Campeonato" />
-        <item
             android:id="@+id/nav_teams"
             android:icon="@drawable/ic_nav_teams"
             android:title="Equipos Campeonatos" />
@@ -26,7 +22,7 @@
                     android:title="Categoria Damas" />
                 <item
                     android:id="@+id/nav_varones"
-                    android:title="Categoria Damas" />
+                    android:title="Categoria Varones" />
             </menu>
         </item>
         <item

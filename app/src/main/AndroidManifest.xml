@@ -22,25 +22,40 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-            activity
+        <activity
             android:name=".ui.LoginActivity"
+            android:label="Inicio de Sesión"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.GamersActivity"
+            android:label="Equipos del Campeonato"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.PendingActivity"
+            android:label="Partidos Pendientes"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity
+            android:name=".ui.TeamsActivity"
+            android:label="@string/title_activity_teams"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity
+            android:name=".ui.LadiesActivity"
+            android:label="Categoria Damas"
             android:theme="@style/AppTheme.NoActionBar"
-            android:label="Inicio de Sesión" /
-        -->
+            />
+        <activity
+            android:name=".ui.MaleActivity"
+            android:label="Categoria Damas"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
         <!--
-           ATTENTION: This was auto-generated to add Google Play services to your project for
-           App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.
-        -->
+   ATTENTION: This was auto-generated to add Google Play services to your project for
+   App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information.-->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
-
-        <activity
-            android:name=".ui.GamersActivity"
-            android:label="@string/title_activity_gamers"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ui.PendingActivity"></activity>
     </application>
 
 </manifest>

@@ -5,4 +5,7 @@
     <color name="colorAccent">#98D743</color>
     <color name="blanco">#FFFFFF</color>
     <color name="colorActivo">#FF2D8F2D</color>
+    <color name="activeStatus">#25b116</color>
+    <color name="completedStatus">#2b3ab1</color>
+    <color name="cancelledStatus">#e60909</color>
 </resources>

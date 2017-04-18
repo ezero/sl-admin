@@ -18,7 +18,7 @@ public class SoftwareLeagueApiAdapter {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
 
-        String baseUrl = "http://localhost:3000/";
+        String baseUrl = "https://sl-app-89646.firebaseio.com/";
 
         if (API_SERVICE == null) {
             Retrofit retrofit = new Retrofit.Builder()

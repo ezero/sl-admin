@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -20,16 +21,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.softwareleague.app.sladmin.R;
 import com.softwareleague.app.sladmin.data.api.SoftwareLeagueApi;
-import com.softwareleague.app.sladmin.data.api.SoftwareLeagueApiAdapter;
-import com.softwareleague.app.sladmin.data.api.model.Affiliate;
-import com.softwareleague.app.sladmin.data.api.model.ApiError;
-import com.softwareleague.app.sladmin.data.api.model.LoginBody;
+import com.softwareleague.app.sladmin.data.api.response.UserLoginTask;
+import com.softwareleague.app.sladmin.data.model.Affiliate;
+import com.softwareleague.app.sladmin.data.model.ApiError;
+import com.softwareleague.app.sladmin.data.model.LoginBody;
 import com.softwareleague.app.sladmin.data.prefs.SessionPrefs;
 
 
@@ -41,12 +38,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-/**
- * Screen de login para afiliados.
- */
+
 public class LoginActivity extends AppCompatActivity {
 
-    private Retrofit mRestAdapter;
+    private static final String DUMMY_USER_ID = "admin";
+    private static final String DUMMY_PASSWORD = "password";
     private SoftwareLeagueApi mSoftLeagueApi;
 
     // UI references.
@@ -57,19 +53,15 @@ public class LoginActivity extends AppCompatActivity {
     private TextInputLayout mFloatLabelPassword;
     private View mProgressView;
     private View mLoginFormView;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
-
+    // comprueba
+    private UserLoginTask mAuthTask = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
         // Crear adaptador Retrofit
-        mRestAdapter = new Retrofit.Builder()
+        Retrofit mRestAdapter = new Retrofit.Builder()
                 .baseUrl(SoftwareLeagueApi.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
@@ -81,7 +73,9 @@ public class LoginActivity extends AppCompatActivity {
         mPasswordView = (EditText) findViewById(R.id.password);
         mFloatLabelUserId = (TextInputLayout) findViewById(R.id.float_label_user_id);
         mFloatLabelPassword = (TextInputLayout) findViewById(R.id.float_label_password);
+
         Button mSignInButton = (Button) findViewById(R.id.email_sign_in_button);
+
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
 
@@ -112,11 +106,38 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+
     }
 
+    public class UserLoginTask extends AsyncTask<Void,Void,Integer> {
+        private final String mUserId;
+        private final String mPassword;
+
+        public UserLoginTask(String mUserId, String mPassword) {
+            this.mUserId = mUserId;
+            this.mPassword = mPassword;
+        }
+
+        @Override
+        protected Integer doInBackground(Void... voids) {
+            try {
+                // Simulate network access.
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                return 4;
+            }
+
+            if (!mUserId.equals(DUMMY_USER_ID)) {
+                return 2;
+            }
+
+            if (!mPassword.equals(DUMMY_PASSWORD)) {
+                return 3;
+            }
+
+            return 1;
+        }
+    }
     private void attemptLogin() {
 
         // Reset errors.
@@ -159,7 +180,10 @@ public class LoginActivity extends AppCompatActivity {
         } else {
             // Mostrar el indicador de carga y luego iniciar la petición asíncrona.
             showProgress(true);
-
+            mAuthTask = new UserLoginTask(userId, password);
+            mAuthTask.execute((Void) null);
+            onPostExecute(mAuthTask.doInBackground((Void) null));
+            /*
             Call<Affiliate> loginCall = (Call<Affiliate>) mSoftLeagueApi.Users(new LoginBody(userId, password));
             loginCall.enqueue(new Callback<Affiliate>() {
                 @Override
@@ -192,10 +216,9 @@ public class LoginActivity extends AppCompatActivity {
                     }
 
                     // Guardar afiliado en preferencias
-                    SessionPrefs.get(LoginActivity.this).saveAffiliate(response.body());
+                    // SessionPrefs.get(LoginActivity.this).saveAffiliate(response.body());
 
                     // Ir al Layout Principal
-                    //showAppointmentsScreen();
                     showMainScreen();
                 }
 
@@ -205,9 +228,30 @@ public class LoginActivity extends AppCompatActivity {
                     showLoginError(t.getMessage());
                 }
             });
+            */
         }
     }
 
+    protected void onPostExecute(final Integer success) {
+        //mAuthTask = null;
+        showProgress(false);
+
+        switch (success) {
+            case 1:
+                // Guardar afiliado en preferencias
+                //String id, String nombre, String tipo, String login, String clave, String estado, String fechaCreacion, String fechaModificacion, String token
+                SessionPrefs.get(LoginActivity.this).saveAffiliate(new Affiliate("1","Administrador","Admin","admin","password","Activo","12/04/2017","12/04/2017",""));
+                showMainScreen();
+                break;
+            case 2:
+            case 3:
+                showLoginError("Cuenta de identificación o contraseña inválidos");
+                break;
+            case 4:
+                showLoginError(getString(R.string.error_server));
+                break;
+        }
+    }
     private boolean isUserIdValid(String userId) {
         return userId.length() >= 5;
     }
@@ -239,40 +283,4 @@ public class LoginActivity extends AppCompatActivity {
         return activeNetwork != null && activeNetwork.isConnected();
     }
 
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    public Action getIndexApiAction() {
-        Thing object = new Thing.Builder()
-                .setName("Login Page") // TODO: Define a title for the content shown.
-                // TODO: Make sure this auto-generated URL is correct.
-                .setUrl(Uri.parse("http://[ENTER-YOUR-URL-HERE]"))
-                .build();
-        return new Action.Builder(Action.TYPE_VIEW)
-                .setObject(object)
-                .setActionStatus(Action.STATUS_TYPE_COMPLETED)
-                .build();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        AppIndex.AppIndexApi.start(client, getIndexApiAction());
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        AppIndex.AppIndexApi.end(client, getIndexApiAction());
-        client.disconnect();
-    }
 }
-

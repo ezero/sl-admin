@@ -33,4 +33,13 @@
     <string name="hint_fechaInsf">Fecha Inscripción (Final)</string>
     <string name="hint_fechaCami">Fecha Campeonato (Inicio)</string>
     <string name="hint_fechaCamf">Fecha Campeonato (Final)</string>
+    <!-- Listado de las Categorias -->
+    <string-array name="categoria">
+        <item>Damas</item>
+        <item>Varones</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_teams">Listado Equipos</string>
 </resources>

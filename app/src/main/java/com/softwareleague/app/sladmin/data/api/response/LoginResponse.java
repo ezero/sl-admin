@@ -1,4 +1,4 @@
-package com.softwareleague.app.sladmin.data.api.model;
+package com.softwareleague.app.sladmin.data.api.response;
 
 
 public class LoginResponse {

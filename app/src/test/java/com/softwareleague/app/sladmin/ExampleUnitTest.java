@@ -1,4 +1,4 @@
-package com.hermosaprogramacion.blog.saludmock;
+package com.softwareleague.app.sladmin;
 
 import org.junit.Test;
 
