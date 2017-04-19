@@ -9,15 +9,15 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme"
-        android:fitsSystemWindows="false">
+        android:fitsSystemWindows="false"
+        android:theme="@style/AppTheme">
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+            android:theme="@style/ThemeOverlay.AppCompat.Dark"
+            app:layout_scrollFlags="scroll|enterAlways" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -45,9 +45,9 @@
 
                 <EditText
                     android:id="@+id/etId"
-                    android:hint="@string/hint_Id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/hint_Id"
                     android:inputType="text"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
@@ -71,9 +71,9 @@
 
                 <EditText
                     android:id="@+id/etfechaInsi"
-                    android:hint="@string/hint_fechaInsi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/hint_fechaInsi"
                     android:inputType="date"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
@@ -85,9 +85,9 @@
 
                 <EditText
                     android:id="@+id/etfechaInsf"
-                    android:hint="@string/hint_fechaInsf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/hint_fechaInsf"
                     android:inputType="date"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
@@ -99,9 +99,9 @@
 
                 <EditText
                     android:id="@+id/etfechaCami"
-                    android:hint="@string/hint_fechaCami"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/hint_fechaCami"
                     android:inputType="date"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>
@@ -113,9 +113,9 @@
 
                 <EditText
                     android:id="@+id/etfechaCamf"
-                    android:hint="@string/hint_fechaCamf"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:hint="@string/hint_fechaCamf"
                     android:inputType="date"
                     android:maxLines="1" />
             </android.support.design.widget.TextInputLayout>

@@ -1,8 +1,8 @@
 package com.softwareleague.app.sladmin.ui.fragment;
 
 import android.app.Dialog;
-import android.support.v4.app.DialogFragment;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -15,19 +15,19 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Toast;
 
-
 import com.softwareleague.app.sladmin.R;
 
-public class LeagueDialogFragment extends DialogFragment {
+public class LeagueFragment extends DialogFragment {
 
-    public LeagueDialogFragment(){}
+    public LeagueFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.dialog_league, container, false);
+        View view = inflater.inflate(R.layout.dialog_new_league, container, false);
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setTitle("Registre el Campeonato");
+        toolbar.setTitle("Nuevo Campeonato");
         ((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         ActionBar actionBar = ((AppCompatActivity) getActivity()).getSupportActionBar();
@@ -50,7 +50,7 @@ public class LeagueDialogFragment extends DialogFragment {
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
-        inflater.inflate(R.menu.save_menu,menu);
+        inflater.inflate(R.menu.menu_main, menu);
     }
 
     @Override

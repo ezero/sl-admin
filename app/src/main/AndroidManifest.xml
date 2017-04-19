@@ -13,41 +13,38 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.softwareleague.app.sladmin.ui.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.LoginActivity"
-            android:label="Inicio de Sesión"
+            android:name="com.softwareleague.app.sladmin.ui.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.GamersActivity"
-            android:label="Equipos del Campeonato"
+            android:name="com.softwareleague.app.sladmin.ui.TeamsActivity"
+            android:label="Equipos"
+            android:parentActivityName="com.softwareleague.app.sladmin.ui.MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.softwareleague.app.sladmin.ui.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.softwareleague.app.sladmin.ui.GamersActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ui.PendingActivity"
-            android:label="Partidos Pendientes"
+            android:name="com.softwareleague.app.sladmin.ui.PendingActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <activity
-            android:name=".ui.TeamsActivity"
-            android:label="@string/title_activity_teams"
+            android:name="com.softwareleague.app.sladmin.ui.LadiesActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
-
         <activity
-            android:name=".ui.LadiesActivity"
-            android:label="Categoria Damas"
-            android:theme="@style/AppTheme.NoActionBar"
-            />
-        <activity
-            android:name=".ui.MaleActivity"
-            android:label="Categoria Damas"
+            android:name="com.softwareleague.app.sladmin.ui.MaleActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <!--

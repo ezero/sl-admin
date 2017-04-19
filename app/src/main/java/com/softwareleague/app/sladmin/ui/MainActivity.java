@@ -27,9 +27,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.softwareleague.app.sladmin.R;
 import com.softwareleague.app.sladmin.data.model.League;
-import com.softwareleague.app.sladmin.data.prefs.SessionPrefs;
 import com.softwareleague.app.sladmin.ui.adapter.LeagueAdapter;
-import com.softwareleague.app.sladmin.ui.fragment.LeagueDialogFragment;
+import com.softwareleague.app.sladmin.ui.fragment.LeagueFragment;
 
 import java.util.ArrayList;
 
@@ -47,33 +46,35 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
 
         // Redirección al Login
-        if (!SessionPrefs.get(this).isLoggedIn()) {
+        /*if (!SessionPrefs.get(this).isLoggedIn()) {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
             return;
-        }
-
+        }*/
+        //Cargando la Activity Principal (Main)
         setContentView(R.layout.activity_main);
-
+        //CArgando el Toolbar
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //Remover titulo del action bar
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-
+        //
+        leagueDataset = new ArrayList<>();
+        //Carrete de carga
+        loadLeague();
         //RecyclerView para listar los campeonatos
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
-
+        //Inicio de uso de Firebase
         firebaseDatabase = FirebaseDatabase.getInstance();
         data = firebaseDatabase.getReference("campeonato");
-
+        //Evento de Firebase para poblar el RecyclerView
         data.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                leagueDataset = new ArrayList<>();
+                //Limpiando la Lista de POJO League
                 leagueDataset.clear();
-                loadLeague();
                 League league;
                 for (DataSnapshot dt: dataSnapshot.getChildren()){
                     league = dt.getValue(League.class);
@@ -86,7 +87,6 @@ public class MainActivity extends AppCompatActivity
                 loadLeague();
                 leagueAdapter.notifyDataSetChanged();
                 mEmptyStateContainer = findViewById(R.id.empty_state_container);
-
             }
 
             @Override
@@ -224,7 +224,7 @@ public class MainActivity extends AppCompatActivity
 
     private void showCreateLeagueDialog() {
         FragmentManager fragmentManager = getSupportFragmentManager();
-        LeagueDialogFragment newFragment = new LeagueDialogFragment();
+        LeagueFragment newFragment = new LeagueFragment();
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 

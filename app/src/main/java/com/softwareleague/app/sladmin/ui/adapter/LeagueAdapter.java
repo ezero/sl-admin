@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.ValueEventListener;
 import com.softwareleague.app.sladmin.R;
 import com.softwareleague.app.sladmin.data.model.League;
 
@@ -19,47 +18,6 @@ public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.ViewHolder
 
     private ArrayList<League> mDataset;
     private Context mContext;
-
-    //Clase Interna para el ViewHolder
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView eTitle;
-        public TextView eFemale;
-        public TextView eMale;
-        public TextView eStatus;
-        public TextView eUser;
-        public TextView eDateA;
-        public TextView eDateB;
-        public TextView eDateIni;
-        public TextView eDateFin;
-        public Button eButton;
-        public View statusIndicator;
-
-        ViewHolder(View v) {
-            super(v);
-            eTitle = (TextView)v.findViewById(R.id.league_title);
-            eFemale = (TextView)v.findViewById(R.id.league_cat_female);
-            eMale = (TextView)v.findViewById(R.id.league_cat_male);
-            eStatus = (TextView)v.findViewById(R.id.league_status);
-            eUser = (TextView)v.findViewById(R.id.league_user);
-            eDateA = (TextView)v.findViewById(R.id.league_date_ins_ini);
-            eDateB = (TextView)v.findViewById(R.id.league_date_ins_fin);
-            eDateIni = (TextView)v.findViewById(R.id.league_date_cam_ini);
-            eDateFin = (TextView)v.findViewById(R.id.league_date_cam_fin);
-            eButton = (Button)v.findViewById(R.id.button_update_league);
-            statusIndicator = v.findViewById(R.id.indicator_league_status);
-
-            eButton.setOnClickListener(new View.OnClickListener(){
-
-                @Override
-                public void onClick(View view) {
-                    int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION){
-                        Toast.makeText(mContext,"Se establecera nuevos parametros a las fechas del Campeonato",Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
-        }
-    }
 
     public LeagueAdapter(Context context, ArrayList<League> myDataset) {
         mContext = context;
@@ -100,6 +58,13 @@ public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.ViewHolder
                                                           .getColor(R.color.cancelledStatus));
                 statusIndicator.setBackgroundResource(R.color.cancelledStatus);
                 break;
+            case "Pendiente":
+                holder.eButton.setVisibility(View.VISIBLE);
+                holder.eStatus.setTextColor(holder.eStatus.getContext()
+                        .getResources()
+                        .getColor(R.color.pendingStatus));
+                statusIndicator.setBackgroundResource(R.color.pendingStatus);
+                break;
         }
 
         holder.eTitle.setText(mDataset.get(position).getNombre());
@@ -116,5 +81,45 @@ public class LeagueAdapter extends RecyclerView.Adapter<LeagueAdapter.ViewHolder
     @Override
     public int getItemCount() {
         return mDataset.size();
+    }
+
+    //Clase Interna para el ViewHolder
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        public TextView eTitle;
+        public TextView eFemale;
+        public TextView eMale;
+        public TextView eStatus;
+        public TextView eUser;
+        public TextView eDateA;
+        public TextView eDateB;
+        public TextView eDateIni;
+        public TextView eDateFin;
+        public Button eButton;
+        public View statusIndicator;
+
+        ViewHolder(View v) {
+            super(v);
+            eTitle = (TextView) v.findViewById(R.id.league_title);
+            eFemale = (TextView) v.findViewById(R.id.league_cat_female);
+            eMale = (TextView) v.findViewById(R.id.league_cat_male);
+            eStatus = (TextView) v.findViewById(R.id.league_status);
+            eUser = (TextView) v.findViewById(R.id.league_user);
+            eDateA = (TextView) v.findViewById(R.id.league_date_ins_ini);
+            eDateB = (TextView) v.findViewById(R.id.league_date_ins_fin);
+            eDateIni = (TextView) v.findViewById(R.id.league_date_cam_ini);
+            eDateFin = (TextView) v.findViewById(R.id.league_date_cam_fin);
+            eButton = (Button) v.findViewById(R.id.button_update_league);
+            statusIndicator = v.findViewById(R.id.indicator_league_status);
+
+            eButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        Toast.makeText(mContext, "Se establecera nuevos parametros a las fechas del Campeonato", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
     }
 }

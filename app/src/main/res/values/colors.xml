@@ -8,4 +8,7 @@
     <color name="activeStatus">#25b116</color>
     <color name="completedStatus">#2b3ab1</color>
     <color name="cancelledStatus">#e60909</color>
+    <color name="pendingStatus">#f2ee10</color>
+    <color name="colorFemale">#f48fb1</color>
+    <color name="colorMale">#1565c0</color>
 </resources>
